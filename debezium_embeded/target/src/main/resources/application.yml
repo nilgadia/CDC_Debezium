@@ -1,0 +1,72 @@
+server:
+  port: 2000
+  servlet:
+    context-path: /target
+
+spring:
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+  application:
+    name: source
+  datasource:
+    password: nyk@7788
+    url: jdbc:postgresql://localhost:5432/CHANGE_DATA_CAPTURE
+    username: postgres
+
+cdc:
+  name: engine
+  connector:
+    class: io.debezium.connector.sqlserver.SqlServerConnector
+  config:
+    name: my-app-connector
+    database:
+      hostname: localhost
+      port: "1433"
+      user: cdc_user_c
+      password: cdc@123
+      dbname: CDC_POC3
+      names: CDC_POC3
+      history: io.debezium.relational.history.MemoryDatabaseHistory
+      server:
+        name: my-app-connector
+        id: "9"
+      include:
+        list: CDC_POC3
+      encrypt: false
+    include:
+      schema:
+        changes: false
+    table:
+      whitelist: cdc_schema_c.TBL_STUDENT
+    topic:
+      prefix: my-app-connector
+    schema:
+      history:
+        internal: io.debezium.storage.file.history.FileSchemaHistory
+        file:
+          filename: C://project//changedatacapture/student-history.dat
+  flattering:
+    enabled: "false"
+  schema: "false"
+  offset:
+    flush-interval:
+      ms: "60000"
+ #   storage: file
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        boot: INFO
+    cdc:
+      autoconfigure: INFO
+    io:
+      debezium:
+        connector: INFO
+debug: true
+
+
