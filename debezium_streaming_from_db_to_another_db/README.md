@@ -56,8 +56,8 @@ How to run:
 
 ```shell
 # Start the application
-export DEBEZIUM_VERSION=2.1
-docker compose -f docker-compose-jdbc.yaml up --build
+export DEBEZIUM_VERSION=latest
+docker compose -f docker-compose.yaml up --build
 
 # Start PostgreSQL connector
 curl -i -X POST -H "Accept:application/json" -H  "Content-Type:application/json" http://localhost:8083/connectors/ -d @jdbc-sink.json
@@ -69,7 +69,7 @@ curl -i -X POST -H "Accept:application/json" -H  "Content-Type:application/json"
 Check contents of the MySQL database:
 
 ```shell
-docker compose -f docker-compose-jdbc.yaml exec mysql bash -c 'mysql -u $MYSQL_USER  -p$MYSQL_PASSWORD inventory -e "select * from customers"'
+docker compose -f docker-compose.yaml exec mysql bash -c 'mysql -u $MYSQL_USER  -p$MYSQL_PASSWORD inventory -e "select * from customers"'
 +------+------------+-----------+-----------------------+
 | id   | first_name | last_name | email                 |
 +------+------------+-----------+-----------------------+
@@ -83,7 +83,7 @@ docker compose -f docker-compose-jdbc.yaml exec mysql bash -c 'mysql -u $MYSQL_U
 Verify that the PostgreSQL database has the same content:
 
 ```shell
-docker compose -f docker-compose-jdbc.yaml exec postgres bash -c 'psql -U $POSTGRES_USER $POSTGRES_DB -c "select * from customers"'
+docker compose -f docker-compose.yaml exec postgres bash -c 'psql -U $POSTGRES_USER $POSTGRES_DB -c "select * from customers"'
  last_name |  id  | first_name |         email         
 -----------+------+------------+-----------------------
  Thomas    | 1001 | Sally      | sally.thomas@acme.com
@@ -97,7 +97,7 @@ docker compose -f docker-compose-jdbc.yaml exec postgres bash -c 'psql -U $POSTG
 
 Insert a new record into MySQL;
 ```shell
-docker compose -f docker-compose-jdbc.yaml exec mysql bash -c 'mysql -u $MYSQL_USER  -p$MYSQL_PASSWORD inventory'
+docker compose -f docker-compose.yaml exec mysql bash -c 'mysql -u $MYSQL_USER  -p$MYSQL_PASSWORD inventory'
 mysql> insert into customers values(default, 'John', 'Doe', 'john.doe@example.com');
 Query OK, 1 row affected (0.02 sec)
 ```
@@ -105,7 +105,7 @@ Query OK, 1 row affected (0.02 sec)
 Verify that PostgreSQL contains the new record:
 
 ```shell
-docker compose -f docker-compose-jdbc.yaml exec postgres bash -c 'psql -U $POSTGRES_USER $POSTGRES_DB -c "select * from customers"'
+docker compose -f docker-compose.yaml exec postgres bash -c 'psql -U $POSTGRES_USER $POSTGRES_DB -c "select * from customers"'
  last_name |  id  | first_name |         email         
 -----------+------+------------+-----------------------
 ...
@@ -126,7 +126,7 @@ Rows matched: 1  Changed: 1  Warnings: 0
 Verify that record in PostgreSQL is updated:
 
 ```shell
-docker compose -f docker-compose-jdbc.yaml  exec postgres bash -c 'psql -U $POSTGRES_USER $POSTGRES_DB -c "select * from customers"'
+docker compose -f docker-compose.yaml  exec postgres bash -c 'psql -U $POSTGRES_USER $POSTGRES_DB -c "select * from customers"'
  last_name |  id  | first_name |         email         
 -----------+------+------------+-----------------------
 ...
@@ -146,7 +146,7 @@ Query OK, 1 row affected (0.01 sec)
 Verify that record in PostgreSQL is deleted:
 
 ```shell
-docker compose-f docker-compose-jdbc.yaml  exec postgres bash -c 'psql -U $POSTGRES_USER $POSTGRES_DB -c "select * from customers"'
+docker compose-f docker-compose.yaml  exec postgres bash -c 'psql -U $POSTGRES_USER $POSTGRES_DB -c "select * from customers"'
  last_name |  id  | first_name |         email         
 -----------+------+------------+-----------------------
 ...
