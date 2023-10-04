@@ -1,13 +1,13 @@
 version: '2'
 services:
   zookeeper:
-    image: quay.io/debezium/zookeeper
+    image: quay.io/debezium/zookeeper:${DEBEZIUM_VERSION}
     ports:
      - 2181:2181
      - 2888:2888
      - 3888:3888
   kafka:
-    image: quay.io/debezium/kafka
+    image: quay.io/debezium/kafka:${DEBEZIUM_VERSION}
     ports:
      - 9092:9092
     links:
@@ -15,7 +15,7 @@ services:
     environment:
      - ZOOKEEPER_CONNECT=zookeeper:2181
   mysql:
-    image: quay.io/debezium/example-mysql
+    image: quay.io/debezium/example-mysql:${DEBEZIUM_VERSION}
     ports:
      - 3306:3306
     environment:
@@ -33,7 +33,6 @@ services:
   connect:
     image: debezium/connect-jdbc-es:${DEBEZIUM_VERSION}
     build:
-      context: debezium-jdbc-es
       args:
         DEBEZIUM_VERSION: ${DEBEZIUM_VERSION}
     ports:
