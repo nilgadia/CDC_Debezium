@@ -133,7 +133,7 @@
 ### Performance
 [https://debezium.io/blog/2023/06/29/debezium-oracle-series-part-3/](https://debezium.io/blog/2023/06/29/debezium-oracle-series-part-3/)</br>
 [https://reorchestrate.com/posts/debezium-performance-impact/#:~:text=Given%20that%20Debezium%20reuses%20the,performance%20impact%20by%20enabling%20Debezium.](
-https://reorchestrate.com/posts/debezium-performance-impact/#:~:text=Given%20that%20Debezium%20reuses%20the,performance%20impact%20by%20enabling%20Debezium.)
+https://reorchestrate.com/posts/debezium-performance-impact/#:~:text=Given%20that%20Debezium%20reuses%20the,performance%20impact%20by%20enabling%20Debezium.)</br>
 <i>Reference </i>[https://debezium.io/documentation/reference/](https://debezium.io/documentation/reference/)</br>
 <i>Examples </i>[https://github.com/debezium/debezium-examples](https://github.com/debezium/debezium-examples)</br>
 <i>Credit Gunnar Morling</i> [https://www.youtube.com/watch?v=IOZ2Um6e430&t=2152s](https://www.youtube.com/watch?v=IOZ2Um6e430&t=2152s)</br>
