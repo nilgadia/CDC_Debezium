@@ -162,3 +162,4 @@ End application:
 # Shut down the cluster
 docker compose -f docker-compose.yaml down
 ````````
+Reference [streaming-to-another-database](https://debezium.io/blog/2017/09/25/streaming-to-another-database/)
