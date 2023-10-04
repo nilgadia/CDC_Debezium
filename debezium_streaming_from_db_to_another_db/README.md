@@ -160,5 +160,5 @@ End application:
 
 ```shell
 # Shut down the cluster
-docker compose -f docker-compose-jdbc.yaml down
+docker compose -f docker-compose.yaml down
 ````````
