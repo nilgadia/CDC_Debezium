@@ -1,6 +1,6 @@
 # Debezium Unwrap SMT Demo
 
-This setup is going to demonstrate how to receive events from MySQL database and stream them down to a PostgreSQL database and/or an Elasticsearch server using the [Debezium Event Flattening SMT](https://debezium.io/docs/configuration/event-flattening/).
+This setup is going to demonstrate how to receive events from Postgres database and stream them down to a PostgreSQL database and/or an Elasticsearch server using the [Debezium Event Flattening SMT](https://debezium.io/docs/configuration/event-flattening/).
 
 ## Table of Contents
 
@@ -42,7 +42,7 @@ This setup is going to demonstrate how to receive events from MySQL database and
                   |     Kafka      |
                   |                |
                   +----------------+
-				          |
+                          |
                           |
            ---------------------------------
           |                                 |
@@ -68,6 +68,60 @@ How to run:
 
 ```shell
 # Start the application
+
+ docker kill $(docker ps -q)
+ docker rm $(docker ps -a -q)
+ docker rmi $(docker images -q)
+ docker system prune -a
+ docker ps
+ docker images
+ 
+ docker compose up -d
+ docker ps
+ check if all containers are running
+ 
+ Troubleshoot
+ 
+ if any services is not running
+ docker run image
+ Check the log
+
+ Solution - Recommendation to get docker-compose from Official Docker Image (Community Version) 
+ https://github.com/confluentinc/cp-all-in-one/blob/latest/cp-all-in-one/docker-compose.yml
+  
+ Docker Kafka CLI
+ Check topics created
+ kafka-topics --bootstrap-server localhost:9092 --list
+ 
+ Postgres CLI
+
+ psql -U postgres -d movies_db -w
+ CREATE TABLE movie (id integer primary key, name varchar);
+ SELECT * FROM movie;
+ ALTER TABLE public.movie REPLICA IDENTITY FULL
+ SELECT * FROM movie;
+ SELECT * FROM movie;
+  
+ curl -i -X POST -H "Accept:application/json" -H  "Content-Type:application/json" http://localhost:8083/connectors/ -d @source.json
+ 
+ curl -X GET http://localhost:8083/connectors
+ curl -X GET http://localhost:8083/connectors/exampledb-connector 
+ curl -X GET http://localhost:8083/connectors/exampledb-connector/status
+
+ insert into movie (id, name) values (1, 'Bangali');
+ 
+ 
+ Check topics created
+ kafka-topics --bootstrap-server localhost:9092 --list
+
+ 
+ kafka-console-consumer --bootstrap-server localhost:9092 --topic pgserver.public.movie --from-beginning 
+ 
+  SELECT * FROM student;
+
+
+https://www.confluent.io/blog/kafka-listeners-explained/
+https://www.iamninad.com/posts/docker-compose-for-your-next-debezium-and-postgres-project/
 export DEBEZIUM_VERSION=latest
 docker compose -f docker-compose.yaml up --build
 
