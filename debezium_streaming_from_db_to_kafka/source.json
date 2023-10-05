@@ -1,0 +1,15 @@
+{
+  "name": "moviesdb-connector",
+  "config": {
+    "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+    "plugin.name": "pgoutput",
+	"topic.prefix": "pgserver",
+    "database.hostname": "postgres",
+    "database.port": "5432",
+    "database.user": "postgres",
+    "database.password": "postgres",
+    "database.dbname": "movies_db",
+    "database.server.name": "postgres",
+    "table.include.list": "public.movie"
+  }
+}
