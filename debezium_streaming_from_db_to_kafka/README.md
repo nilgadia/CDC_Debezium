@@ -122,5 +122,5 @@ End application:
 docker compose -f docker-compose.yaml down
 ````````
 
-[kafka listeners explained](https://github.com/confluentinc/cp-all-in-one/blob/latest/cp-all-in-one/docker-compose.yml)
+[kafka listeners explained](https://github.com/confluentinc/cp-all-in-one/blob/latest/cp-all-in-one/docker-compose.yml)<br>
 [https://www.iamninad.com/posts/docker-compose-for-your-next-debezium-and-postgres-project/](https://github.com/confluentinc/cp-all-in-one/blob/latest/cp-all-in-one/docker-compose.yml)
