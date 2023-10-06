@@ -35,18 +35,18 @@ public class CDCListener {
     /**
      * Single thread pool which will run the Debezium engine asynchronously.
      */
-    //private final Executor executor = Executors.newSingleThreadExecutor();
+    private final Executor executor = Executors.newSingleThreadExecutor();
 
     /**
      * The Debezium engine which needs to be loaded with the configurations, Started and Stopped - for the
      * CDC to work.
      */
-    //private final EmbeddedEngine engine;
+    private final EmbeddedEngine engine;
 
     /**
      * Handle to the Service layer, which interacts with ElasticSearch.
      */
-    //private final StudentService studentService;
+    private final StudentService studentService;
 
     /**
      * Constructor which loads the configurations and sets a callback method 'handleEvent', which is invoked when
@@ -68,32 +68,32 @@ public class CDCListener {
      * @param studentConnector
      * @param studentService
      */
-//    private CDCListener(Configuration studentConnector, StudentService studentService) {
-//        this.engine = EmbeddedEngine
-//                .create()
-//                .using(studentConnector)
-//                .notifying(this::handleEvent).build();
-//
-//        this.studentService = studentService;
-//    }
+    private CDCListener(Configuration studentConnector, StudentService studentService) {
+        this.engine = EmbeddedEngine
+                .create()
+                .using(studentConnector)
+                .notifying(this::handleEvent).build();
+
+        this.studentService = studentService;
+    }
 
     /**
      * The method is called after the Debezium engine is initialized and started asynchronously using the Executor.
      */
-//    @PostConstruct
-//    private void start() {
-//        this.executor.execute(engine);
-//    }
+    @PostConstruct
+    private void start() {
+        this.executor.execute(engine);
+    }
 
     /**
      * This method is called when the container is being destroyed. This stops the debezium, merging the Executor.
      */
-//    @PreDestroy
-//    private void stop() {
-//        if (this.engine != null) {
-//            this.engine.stop();
-//        }
-//    }
+    @PreDestroy
+    private void stop() {
+        if (this.engine != null) {
+            this.engine.stop();
+        }
+    }
 
     /**
      * This method is invoked when a transactional action is performed on any of the tables that were configured.

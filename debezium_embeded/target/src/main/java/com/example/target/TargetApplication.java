@@ -9,8 +9,8 @@ import org.springframework.context.annotation.Bean;
 
 import java.util.function.Consumer;
 
-@SpringBootApplication(scanBasePackages = {"cdc"})
-@AutoConfigureBefore(CdcAutoConfiguration.class)
+@SpringBootApplication//(scanBasePackages = {"cdc"})
+//@AutoConfigureBefore(CdcAutoConfiguration.class)
 public class TargetApplication {
 
 	public static void main(String[] args) {

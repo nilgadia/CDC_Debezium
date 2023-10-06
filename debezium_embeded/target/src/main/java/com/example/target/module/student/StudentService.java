@@ -3,18 +3,15 @@ package com.example.target.module.student;
 import com.example.target.utils.Operation;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
-import org.apache.kafka.connect.source.SourceRecord;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
-import java.util.function.Consumer;
 
 @Service
 @AllArgsConstructor
 public class StudentService {
 
-    //private final Consumer<SourceRecord> recordConsumer;
     private final StudentRepository repository;
     private final StudentMapper mapper;
 
