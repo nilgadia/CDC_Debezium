@@ -104,7 +104,7 @@
 * Data monitoring even when apps are down
 * Supports MySQL servers, PostgreSQL servers, SQL servers, and MongoDB
 * Minimal data loss<br>
-[reference](https://debezium.io/documentation/reference/stable/features.html)
+  [Reference](https://debezium.io/documentation/reference/stable/features.html)
 ### Benefits of CDC with Debezium
 * The Source of truth data is maintained in the application’s database tables and transaction log
 * It offers reliable messaging and transactional guarantees and this minimizes any possibility of data corruption or loss
@@ -115,13 +115,13 @@
 ### Drawbacks of CDC with Debezium
 * This approach can add extra latency to the database when reading the transaction log or when polling the message broker
 ### Architecture   
-[reference](https://debezium.io/documentation/reference/stable/architecture.html)
+[Reference](https://debezium.io/documentation/reference/stable/architecture.html)
 ![](images/architecture_1.png)
 ![](images/architecture_2.png)
 ### How it works
 ###### it very from database to database
 #### SQL Server  
-[reference](https://debezium.io/documentation/reference/stable/connectors/sqlserver.html)
+[Reference](https://debezium.io/documentation/reference/stable/connectors/sqlserver.html)
 
 <P>
 
@@ -139,12 +139,13 @@
 
 </p>
 
-#### Postgres [reference](https://debezium.io/documentation/reference/stable/connectors/postgresql.html)
+#### Postgres 
+[Reference](https://debezium.io/documentation/reference/stable/connectors/postgresql.html)
 
 ### Performance
 [link-1](https://debezium.io/blog/2023/06/29/debezium-oracle-series-part-3/)</br>
 [link-2](https://reorchestrate.com/posts/debezium-performance-impact/#:~:text=Given%20that%20Debezium%20reuses%20the,performance%20impact%20by%20enabling%20Debezium.)</br>
 <br><br>
-[documentation](https://debezium.io/documentation/reference/)</br>
-[github](https://github.com/debezium/debezium-examples)</br>
+[Documentation](https://debezium.io/documentation/reference/)</br>
+[Github](https://github.com/debezium/debezium-examples)</br>
 [Gunnar Morling](https://www.youtube.com/watch?v=IOZ2Um6e430&t=2152s)</br>
